@@ -58,9 +58,8 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val data = HttpRequest().makeServiceCall(
-                    "https://api.json-generator.com/templates/qjeKFdjkXCdK/data",
-                    "rbn0rerl1k0d3mcwgw7dva2xuwk780z1hxvyvrb1")
+                val data = HttpRequest().makeServiceCall("https://api.json-generator.com/templates/qjeKFdjkXCdK/data",
+                "rbn0rerl1k0d3mcwgw7dva2xuwk780z1hxvyvrb1")
                 withContext(Dispatchers.Main) {
                     try {
                         if(data != null)
@@ -84,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                 val person = Person(jsonObject)
                 personList.add(person)
             }
-            var listView1 : ListView = findViewById(R.id.listview_main)
+            val listView1 : ListView = findViewById(R.id.listview_main)
             listView1.adapter = PersonAdapter(this, personList)
         } catch (ee: JSONException) {
             ee.printStackTrace()
